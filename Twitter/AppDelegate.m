@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "TwitterViewController.h"
+#import "TwitterClient.h"
+#import "User.h"
 
 @interface AppDelegate ()
 
@@ -18,8 +21,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    LoginViewController *login = [[LoginViewController alloc] init];
-    self.window.rootViewController = login;
+    
+    if ([User currentUser] != nil) {
+        TwitterViewController *twitter = [[TwitterViewController alloc] init];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:twitter];
+        self.window.rootViewController = nav;
+    } else {
+        LoginViewController *login = [[LoginViewController alloc] init];
+        self.window.rootViewController = login;
+    }
+
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -44,6 +55,13 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    
+    [[TwitterClient sharedInstance] openURL:url];
+    
+    return YES;
 }
 
 @end

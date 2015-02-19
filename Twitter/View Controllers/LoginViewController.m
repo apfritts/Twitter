@@ -19,18 +19,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (IBAction)loginTap:(id)sender {
-    TwitterClient *client = [TwitterClient sharedInstance];
-    [client.requestSerializer removeAccessToken];
-    [client fetchRequestTokenWithPath:@"auth/request_token" method:@"GET" callbackURL:[NSURL URLWithString:@"cptwitterdemo://oauth"] scope:nil success:^(BDBOAuth1Credential *requestToken) {
-        NSLog(@"got the request token!");
-        NSURL *authURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.twitter.com/oauth/authorize?oauth_token=%@", requestToken.token]];
-        [[UIApplication sharedApplication] openURL:authURL];
-    } failure:^(NSError *error) {
-        NSLog(@"Failed to get the request token!");
+    [[TwitterClient sharedInstance] loginWithCompletion:^(User *user, NSError *error) {
+        if (user != nil) {
+            // Present tweets
+            NSLog(@"Welcome %@", user.name);
+        } else {
+            // Error
+        }
     }];
 }
 
