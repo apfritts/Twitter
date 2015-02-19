@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  TwitterViewController.h
 //  Twitter
 //
 //  Created by AP Fritts on 2/18/15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface TwitterViewController : UIViewController
 
 @end
-
