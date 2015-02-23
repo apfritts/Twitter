@@ -84,7 +84,7 @@
 }
 
 - (IBAction)likeTap:(id)sender {
-    [[TwitterClient sharedInstance] favoriteTweetx  :self.tweet withCompletion:^(NSError *error) {
+    [[TwitterClient sharedInstance] favoriteTweet:self.tweet withCompletion:^(NSError *error) {
         if (error) {
             self.tweet.favorited = YES;
             if (self.tweet.favorited) {
