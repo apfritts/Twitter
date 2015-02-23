@@ -22,8 +22,8 @@
 		8F214D0B1A9569D300C553F5 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F214D011A9569D300C553F5 /* LoginViewController.xib */; };
 		8F214D0C1A9569D300C553F5 /* TwitterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F214D031A9569D300C553F5 /* TwitterViewController.m */; };
 		8F214D0D1A9569D300C553F5 /* TwitterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F214D041A9569D300C553F5 /* TwitterViewController.xib */; };
-		8F214D0E1A9569D300C553F5 /* TweetCellOld.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F214D071A9569D300C553F5 /* TweetCellOld.m */; };
-		8F214D0F1A9569D300C553F5 /* TweetCellOld.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F214D081A9569D300C553F5 /* TweetCellOld.xib */; };
+		8F214D0E1A9569D300C553F5 /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F214D071A9569D300C553F5 /* TweetCell.m */; };
+		8F214D0F1A9569D300C553F5 /* TweetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F214D081A9569D300C553F5 /* TweetCell.xib */; };
 		8F214D121A957A5700C553F5 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F214D111A957A5700C553F5 /* User.m */; };
 		8F214D151A957E1400C553F5 /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F214D141A957E1400C553F5 /* Tweet.m */; };
 /* End PBXBuildFile section */
@@ -65,9 +65,9 @@
 		8F214D021A9569D300C553F5 /* TwitterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterViewController.h; sourceTree = "<group>"; };
 		8F214D031A9569D300C553F5 /* TwitterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterViewController.m; sourceTree = "<group>"; };
 		8F214D041A9569D300C553F5 /* TwitterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwitterViewController.xib; sourceTree = "<group>"; };
-		8F214D061A9569D300C553F5 /* TweetCellOld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetCellOld.h; sourceTree = "<group>"; };
-		8F214D071A9569D300C553F5 /* TweetCellOld.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetCellOld.m; sourceTree = "<group>"; };
-		8F214D081A9569D300C553F5 /* TweetCellOld.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweetCellOld.xib; sourceTree = "<group>"; };
+		8F214D061A9569D300C553F5 /* TweetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetCell.h; sourceTree = "<group>"; };
+		8F214D071A9569D300C553F5 /* TweetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetCell.m; sourceTree = "<group>"; };
+		8F214D081A9569D300C553F5 /* TweetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweetCell.xib; sourceTree = "<group>"; };
 		8F214D101A957A5700C553F5 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		8F214D111A957A5700C553F5 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		8F214D131A957E1400C553F5 /* Tweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tweet.h; sourceTree = "<group>"; };
@@ -195,9 +195,9 @@
 		8F214D051A9569D300C553F5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8F214D061A9569D300C553F5 /* TweetCellOld.h */,
-				8F214D071A9569D300C553F5 /* TweetCellOld.m */,
-				8F214D081A9569D300C553F5 /* TweetCellOld.xib */,
+				8F214D061A9569D300C553F5 /* TweetCell.h */,
+				8F214D071A9569D300C553F5 /* TweetCell.m */,
+				8F214D081A9569D300C553F5 /* TweetCell.xib */,
 				8F1642D91A9AE089009B2485 /* PostPopup.h */,
 				8F1642DA1A9AE089009B2485 /* PostPopup.m */,
 				8F1643151A9B1834009B2485 /* PostPopup.xib */,
@@ -298,7 +298,7 @@
 			files = (
 				8F1643161A9B1834009B2485 /* PostPopup.xib in Resources */,
 				8F214D0D1A9569D300C553F5 /* TwitterViewController.xib in Resources */,
-				8F214D0F1A9569D300C553F5 /* TweetCellOld.xib in Resources */,
+				8F214D0F1A9569D300C553F5 /* TweetCell.xib in Resources */,
 				8F1642D81A9AE017009B2485 /* PostViewController.xib in Resources */,
 				8F214CE61A95692D00C553F5 /* LaunchScreen.xib in Resources */,
 				8F214CE31A95692D00C553F5 /* Images.xcassets in Resources */,
@@ -359,7 +359,7 @@
 				8F214D151A957E1400C553F5 /* Tweet.m in Sources */,
 				8F214D091A9569D300C553F5 /* TwitterClient.m in Sources */,
 				8F1642D71A9AE017009B2485 /* PostViewController.m in Sources */,
-				8F214D0E1A9569D300C553F5 /* TweetCellOld.m in Sources */,
+				8F214D0E1A9569D300C553F5 /* TweetCell.m in Sources */,
 				8F214D0C1A9569D300C553F5 /* TwitterViewController.m in Sources */,
 				8F1642DB1A9AE089009B2485 /* PostPopup.m in Sources */,
 				8F214CD81A95692D00C553F5 /* main.m in Sources */,

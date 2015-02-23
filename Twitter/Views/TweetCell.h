@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Tweet.h"
 
-@interface TweetCellOld : UITableViewCell
+@interface TweetCell : UITableViewCell
 
 -(void)updateViewWithTweet:(Tweet *)tweet;
 
