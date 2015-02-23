@@ -7,9 +7,13 @@
 //
 
 #import "TweetCell.h"
+#import <AFNetworking/UIImageView+AFNetworking.h>
 
 @interface TweetCell()
 
+@property (weak, nonatomic) Tweet *tweet;
+@property (weak, nonatomic) IBOutlet UIView *tweetCardView;
+@property (weak, nonatomic) IBOutlet UILabel *userName;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImage;
 @property (weak, nonatomic) IBOutlet UILabel *tweetText;
 
@@ -18,13 +22,30 @@
 @implementation TweetCell
 
 - (void)awakeFromNib {
-    // Initialization code
+    [super awakeFromNib];
+    self.tweetText.preferredMaxLayoutWidth = self.tweetCardView.frame.size.width;
+    self.tweetCardView.clipsToBounds = YES;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+-(void)updateViewWithTweet:(Tweet *)tweet {
+    self.tweet = tweet;
+    
+    NSURL *url = [NSURL URLWithString:tweet.user.profile_image_url];
+    [self.profileImage setImageWithURL:url];
+    self.userName.text = [NSString stringWithFormat:@"%@ at %@", tweet.user.screen_name, tweet.created];
+    self.tweetText.text = tweet.text;
+    [self.tweetText sizeToFit];
+}
 
-    // Configure the view for the selected state
+-(void)sizeToFit {
+    [self.tweetText sizeToFit];
+    [self.tweetCardView sizeToFit];
+    [super sizeToFit];
+}
+
+-(void)layoutSubviews {
+    [super layoutSubviews];
+    self.tweetText.preferredMaxLayoutWidth = self.tweetCardView.frame.size.width;
 }
 
 @end

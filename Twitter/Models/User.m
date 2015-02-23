@@ -50,7 +50,7 @@ NSString * const kCurrentUserKey = @"kCurrentUserKey";
     _currentUser = user;
     
     if (_currentUser == nil) {
-        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kCurrentUserKey];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:kCurrentUserKey];
     } else {
         NSData *data = [NSJSONSerialization dataWithJSONObject:_currentUser.dictionary options:0 error:NULL];
         [[NSUserDefaults standardUserDefaults] setObject:data forKey:kCurrentUserKey];

@@ -68,4 +68,53 @@ NSString * const kTwitterBaseUrl = @"https://api.twitter.com";
     }];
 }
 
+-(NSArray *)loadInAir {
+    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"inAir"];
+    if (data != nil) {
+        return [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
+    }
+    return nil;
+}
+
+-(void)loadTimelineSinceId:(NSNumber *)sinceId withCompletion:(void (^)(NSArray *tweets, NSError *error))completion {
+    completion([Tweet tweetsWithArray:[self loadInAir]], nil);
+    return;
+    NSDictionary *params = nil;
+    if (sinceId != nil) {
+        params = @{@"since_id": sinceId, @"count": @"20"};
+    } else {
+        params = @{@"count": @"20"};
+    }
+    [self GET:@"1.1/statuses/home_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        //NSData *data = [NSJSONSerialization dataWithJSONObject:responseObject options:0 error:NULL];
+        //[[NSUserDefaults standardUserDefaults] setObject:data forKey:@"inAir"];
+        //[[NSUserDefaults standardUserDefaults] synchronize];
+        NSArray *tweets = nil;
+        NSError *error = nil;
+        @try {
+            tweets = [Tweet tweetsWithArray:responseObject];
+        }
+        @catch (NSError *e) {
+            error = e;
+        }
+        @finally {
+            completion(tweets, error);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Failed to retrieve timeline: %@", error);
+        completion(nil, error);
+    }];
+}
+
+-(void)postTweet:(Tweet *)tweet {
+    NSDictionary *params = @{
+                             @"tweet": tweet.text
+                             };
+    [self POST:@"1.1/statuses/update" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        // yay
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        //
+    }];
+}
+
 @end
