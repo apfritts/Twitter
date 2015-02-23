@@ -16,9 +16,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *userName;
 @property (strong, nonatomic) UILabel *barButtonCount;
 @property (weak, nonatomic) IBOutlet UITextView *postText;
+@property (weak, nonatomic) IBOutlet UIButton *postButton;
 - (IBAction)onPost:(id)sender;
 - (IBAction)textChanged:(id)sender;
 - (IBAction)cancelTap:(id)sender;
+
+@property (weak, nonatomic) Tweet *replyTweet;
 
 @end
 
@@ -69,11 +72,15 @@
 }
 
 - (IBAction)onPost:(id)sender {
+    // @TODO: require reply user name in tweet
     if (self.postText.text.length > 140) {
         // flash the barButtonItem
         return;
     }
     Tweet *tweet = [[Tweet alloc] init];
+    if (self.replyTweet) {
+        tweet.in_reply_to_status_id = self.replyTweet.id_str;
+    }
     tweet.user = [User currentUser];
     tweet.text = self.postText.text;
     [[TwitterClient sharedInstance] postTweet:tweet withCompletion:^(NSError *error) {
@@ -106,6 +113,11 @@
     if (animated) {
         [self showAnimate];
     }
+}
+
+-(void)replyToTweet:(id)tweet {
+    self.replyTweet = tweet;
+    self.postButton.titleLabel.text = @"Reply";
 }
 
 @end

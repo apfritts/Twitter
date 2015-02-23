@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSDate *created;
 @property (nonatomic, assign) BOOL favorited;
 @property (nonatomic, assign) BOOL retweeted;
+@property (nonatomic, strong) NSString *in_reply_to_status_id;
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary;
 +(NSArray *)tweetsWithArray:(NSArray *)dictionaries;

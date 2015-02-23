@@ -25,6 +25,7 @@
         self.created = [formatter dateFromString:dictionary[@"created_at"]];
         self.favorited = [dictionary[@"favorited"] boolValue];
         self.retweeted = dictionary[@"retweeted_status"] != nil;
+        self.in_reply_to_status_id = dictionary[@"in_reply_to_status_id"];
     }
     return self;
 }

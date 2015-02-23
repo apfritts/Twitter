@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PostViewController">
             <connections>
                 <outlet property="popUpView" destination="iEE-8k-15s" id="Yfa-jX-btg"/>
+                <outlet property="postButton" destination="XFu-HJ-0bk" id="PgB-eo-bD5"/>
                 <outlet property="postText" destination="MBy-i8-jdc" id="t49-SN-MYQ"/>
                 <outlet property="profilePic" destination="vYg-aE-Mlt" id="DZG-lX-Ye0"/>
                 <outlet property="userName" destination="Y4A-G6-Oeh" id="fPR-B8-jgd"/>

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Tweet.h"
 
 @interface PostViewController : UIViewController
 
@@ -15,5 +16,6 @@
 -(void)showInView:(UIView *)parentView animated:(BOOL)animated;
 -(void)showAnimate;
 -(void)removeAnimate;
+-(void)replyToTweet:(Tweet *)tweet;
 
 @end

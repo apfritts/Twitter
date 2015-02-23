@@ -20,6 +20,7 @@
 @interface TweetCell : UITableViewCell
 
 -(void)updateViewWithTweet:(Tweet *)tweet;
+-(Tweet *)getTweet;
 @property (weak, nonatomic) id<TweetCellDelegate> delegate;
 
 @end

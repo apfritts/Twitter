@@ -12,8 +12,9 @@
 #import "TweetCell.h"
 #import "PostPopup.h"
 #import "PostViewController.h"
+#import "TweetViewController.h"
 
-@interface TwitterViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface TwitterViewController () <UITableViewDataSource, UITableViewDelegate, TweetCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *tweets;
@@ -52,8 +53,16 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    TweetViewController *tvc = [[TweetViewController alloc] init];
+    TweetCell *cell = (TweetCell *)[tableView cellForRowAtIndexPath:indexPath];
+    tvc.tweet = [cell getTweet];
+    [self.navigationController pushViewController:tvc animated:YES];
+}
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 120.0f;
+    // @TODO: This needs to NOT be here!
+    return 150.0f;
 }
 
 -(void)loadTweets {
@@ -76,6 +85,12 @@
     //PostViewController *post = [[PostViewController alloc] init];
     //[post.view setBounds:[[UIScreen mainScreen] bounds]];
     //[post showInView:self.view animated:YES];
+}
+
+-(void)replyToTweet:(Tweet *)tweet {
+    PostViewController *post = [[PostViewController alloc] init];
+    [post replyToTweet:tweet];
+    [self.navigationController pushViewController:post animated:YES];
 }
 
 @end

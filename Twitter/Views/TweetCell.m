@@ -57,10 +57,8 @@
     }
 }
 
--(void)sizeToFit {
-    [self.tweetText sizeToFit];
-    [self.tweetCardView sizeToFit];
-    [super sizeToFit];
+-(Tweet *)getTweet {
+    return self.tweet;
 }
 
 -(void)layoutSubviews {
