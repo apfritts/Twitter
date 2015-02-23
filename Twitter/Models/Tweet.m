@@ -17,11 +17,14 @@
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary {
     self = [super init];
     if (self) {
+        self.id_str = dictionary[@"id"];
         self.user = [[User alloc] initWithDictionary:dictionary[@"user"]];
         self.text = dictionary[@"text"];
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         formatter.dateFormat = @"EEE MMM d HH:mm:ss Z y";
         self.created = [formatter dateFromString:dictionary[@"created_at"]];
+        self.favorited = [dictionary[@"favorited"] boolValue];
+        self.retweeted = dictionary[@"retweeted_status"] != nil;
     }
     return self;
 }

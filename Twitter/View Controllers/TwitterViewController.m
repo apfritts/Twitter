@@ -47,11 +47,9 @@
     return cell;
 }
 
-/*
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 120.0f;
 }
- */
 
 -(void)loadTweets {
     [[TwitterClient sharedInstance] loadTimelineSinceId:nil withCompletion:^(NSArray *tweets, NSError *error) {
@@ -62,8 +60,8 @@
 }
 
 -(void)onLogout {
-    //[User setCurrentUser:nil];
-    //[self.navigationController presentViewController:[[LoginViewController alloc] init] animated:YES completion:nil];
+    [User setCurrentUser:nil];
+    [self.navigationController presentViewController:[[LoginViewController alloc] init] animated:YES completion:nil];
 }
 
 -(void)onCompose {

@@ -68,17 +68,7 @@ NSString * const kTwitterBaseUrl = @"https://api.twitter.com";
     }];
 }
 
--(NSArray *)loadInAir {
-    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"inAir"];
-    if (data != nil) {
-        return [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
-    }
-    return nil;
-}
-
 -(void)loadTimelineSinceId:(NSNumber *)sinceId withCompletion:(void (^)(NSArray *tweets, NSError *error))completion {
-    //completion([Tweet tweetsWithArray:[self loadInAir]], nil);
-    //return;
     NSDictionary *params = nil;
     if (sinceId != nil) {
         params = @{@"since_id": sinceId, @"count": @"20"};
@@ -86,9 +76,6 @@ NSString * const kTwitterBaseUrl = @"https://api.twitter.com";
         params = @{@"count": @"20"};
     }
     [self GET:@"1.1/statuses/home_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //NSData *data = [NSJSONSerialization dataWithJSONObject:responseObject options:0 error:NULL];
-        //[[NSUserDefaults standardUserDefaults] setObject:data forKey:@"inAir"];
-        //[[NSUserDefaults standardUserDefaults] synchronize];
         NSArray *tweets = nil;
         NSError *error = nil;
         @try {
@@ -107,10 +94,28 @@ NSString * const kTwitterBaseUrl = @"https://api.twitter.com";
 }
 
 -(void)postTweet:(Tweet *)tweet withCompletion:(void (^)(NSError *error))completion {
-    NSDictionary *params = @{
-                             @"status": tweet.text
-                             };
-    [self POST:@"1.1/statuses/update" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:tweet.text forKey:@"status"];
+    [self POST:@"1.1/statuses/update.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        completion(nil);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        completion(error);
+    }];
+}
+
+-(void)reTweet:(Tweet *)tweet withCompletion:(void (^)(NSError *error))completion {
+    NSDictionary *params = @{@"id": tweet.id_str};
+    NSString *url = [NSString stringWithFormat:@"1.1/statuses/retweet/%@.json", tweet.id_str];
+    [self POST:url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        completion(nil);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        completion(error);
+    }];
+}
+
+-(void)favoriteTweet:(Tweet *)tweet withCompletion:(void (^)(NSError *error))completion {
+    NSDictionary *params = @{@"id": tweet.id_str};
+    [self POST:@"1.1/favorites/create.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         completion(nil);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         completion(error);

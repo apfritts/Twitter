@@ -17,5 +17,7 @@
 -(void)openURL:(NSURL *)url;
 -(void)loadTimelineSinceId:(NSNumber *)sinceId withCompletion:(void (^)(NSArray *tweets, NSError *error))completion;
 -(void)postTweet:(Tweet *)tweet withCompletion:(void (^)(NSError *error))completion;
+-(void)reTweet:(Tweet *)tweet withCompletion:(void (^)(NSError *error))completion;
+-(void)favoriteTweet:(Tweet *)tweet withCompletion:(void (^)(NSError *error))completion;
 
 @end

@@ -40,18 +40,39 @@
                                 <state key="normal" title="Like">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="likeTap:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="YxZ-Lq-gq8"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OjG-ip-869">
                                 <rect key="frame" x="253" y="78" width="39" height="30"/>
                                 <state key="normal" title="Reply">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="replyTap:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="LHe-yB-2T6"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Liked" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qtH-vl-zWb">
+                                <rect key="frame" x="165" y="82" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.47283380681818177" green="0.47283380681818177" blue="0.47283380681818177" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RT'd" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zUe-UK-LUu">
+                                <rect key="frame" x="55" y="82" width="37" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.47283380681818177" green="0.47283380681818177" blue="0.47283380681818177" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WEz-QL-eoC">
-                                <rect key="frame" x="150" y="78" width="57" height="30"/>
+                                <rect key="frame" x="100" y="78" width="57" height="30"/>
                                 <state key="normal" title="Retweet">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="retweetTap:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="zoS-6a-jdE"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -61,14 +82,18 @@
                             <constraint firstItem="cW0-5a-cvB" firstAttribute="leading" secondItem="2ap-dw-O5x" secondAttribute="leading" id="3Db-jA-V4w"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="WEz-QL-eoC" secondAttribute="bottom" constant="8" id="4Rj-eo-JZq"/>
                             <constraint firstItem="OjG-ip-869" firstAttribute="centerY" secondItem="qCj-ew-5GP" secondAttribute="centerY" id="8La-Kl-aHI"/>
-                            <constraint firstItem="qCj-ew-5GP" firstAttribute="leading" secondItem="WEz-QL-eoC" secondAttribute="trailing" constant="8" id="KaR-aj-v7D"/>
+                            <constraint firstItem="zUe-UK-LUu" firstAttribute="centerY" secondItem="qtH-vl-zWb" secondAttribute="centerY" id="RdF-Ps-rUf"/>
+                            <constraint firstItem="WEz-QL-eoC" firstAttribute="leading" secondItem="zUe-UK-LUu" secondAttribute="trailing" constant="8" id="YMZ-gT-FTC"/>
                             <constraint firstAttribute="bottom" secondItem="OjG-ip-869" secondAttribute="bottom" constant="8" id="Ztq-KG-21C"/>
                             <constraint firstItem="vlj-B2-uTl" firstAttribute="leading" secondItem="2ap-dw-O5x" secondAttribute="leading" id="acH-sl-AqX"/>
                             <constraint firstItem="OjG-ip-869" firstAttribute="leading" secondItem="qCj-ew-5GP" secondAttribute="trailing" constant="8" id="ahr-Qh-55v"/>
                             <constraint firstAttribute="bottom" secondItem="qCj-ew-5GP" secondAttribute="bottom" constant="8" id="aym-rc-tE1"/>
                             <constraint firstAttribute="bottom" secondItem="WEz-QL-eoC" secondAttribute="bottom" constant="8" id="b4W-cG-uGZ"/>
+                            <constraint firstItem="qtH-vl-zWb" firstAttribute="leading" secondItem="WEz-QL-eoC" secondAttribute="trailing" constant="8" id="b4a-bM-R6r"/>
+                            <constraint firstItem="zUe-UK-LUu" firstAttribute="centerY" secondItem="WEz-QL-eoC" secondAttribute="centerY" id="dvy-Gx-PVR"/>
                             <constraint firstItem="OjG-ip-869" firstAttribute="centerY" secondItem="WEz-QL-eoC" secondAttribute="centerY" id="f1B-PF-2jA"/>
                             <constraint firstItem="kkE-lO-s23" firstAttribute="leading" secondItem="vlj-B2-uTl" secondAttribute="trailing" constant="8" id="fQG-Fn-v1q"/>
+                            <constraint firstItem="qCj-ew-5GP" firstAttribute="leading" secondItem="qtH-vl-zWb" secondAttribute="trailing" constant="8" id="gk0-iV-ohx"/>
                             <constraint firstAttribute="trailing" secondItem="OjG-ip-869" secondAttribute="trailing" constant="8" id="mI8-Qz-6jq"/>
                             <constraint firstAttribute="trailing" secondItem="kkE-lO-s23" secondAttribute="trailing" id="oyr-hW-j88"/>
                             <constraint firstItem="vlj-B2-uTl" firstAttribute="centerY" secondItem="kkE-lO-s23" secondAttribute="centerY" id="qgF-cB-o1Q"/>
@@ -87,7 +112,11 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
             <connections>
+                <outlet property="likeButton" destination="qCj-ew-5GP" id="5rC-Jp-YfZ"/>
+                <outlet property="likeLabel" destination="qtH-vl-zWb" id="aS8-3W-HgN"/>
                 <outlet property="profileImage" destination="vlj-B2-uTl" id="AXz-LQ-PP5"/>
+                <outlet property="retweetButton" destination="WEz-QL-eoC" id="tMu-tk-uj7"/>
+                <outlet property="retweetLabel" destination="zUe-UK-LUu" id="NI5-te-Rce"/>
                 <outlet property="tweetCardView" destination="H2p-sc-9uM" id="gjW-lL-4BL"/>
                 <outlet property="tweetText" destination="cW0-5a-cvB" id="fnc-Xk-aII"/>
                 <outlet property="userName" destination="kkE-lO-s23" id="TMp-6K-Kzy"/>

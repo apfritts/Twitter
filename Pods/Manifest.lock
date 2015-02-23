@@ -23,43 +23,13 @@ PODS:
   - BDBOAuth1Manager (1.5.0):
     - AFNetworking/NSURLConnection (~> 2.5.0)
     - AFNetworking/NSURLSession (~> 2.5.0)
-  - MRProgress (0.8.1):
-    - MRProgress/ActivityIndicator (= 0.8.1)
-    - MRProgress/Blur (= 0.8.1)
-    - MRProgress/Circular (= 0.8.1)
-    - MRProgress/Icons (= 0.8.1)
-    - MRProgress/NavigationBarProgress (= 0.8.1)
-    - MRProgress/Overlay (= 0.8.1)
-  - MRProgress/ActivityIndicator (0.8.1):
-    - MRProgress/Stopable
-  - MRProgress/Blur (0.8.1):
-    - MRProgress/Helper
-  - MRProgress/Circular (0.8.1):
-    - MRProgress/Helper
-    - MRProgress/ProgressBaseClass
-    - MRProgress/Stopable
-  - MRProgress/Helper (0.8.1)
-  - MRProgress/Icons (0.8.1)
-  - MRProgress/NavigationBarProgress (0.8.1):
-    - MRProgress/ProgressBaseClass
-  - MRProgress/Overlay (0.8.1):
-    - MRProgress/ActivityIndicator
-    - MRProgress/Blur
-    - MRProgress/Circular
-    - MRProgress/Helper
-    - MRProgress/Icons
-  - MRProgress/ProgressBaseClass (0.8.1)
-  - MRProgress/Stopable (0.8.1):
-    - MRProgress/Helper
 
 DEPENDENCIES:
   - AFNetworking
   - BDBOAuth1Manager
-  - MRProgress
 
 SPEC CHECKSUMS:
   AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
   BDBOAuth1Manager: 274574557077abc873fc5688abe8b991e782749c
-  MRProgress: cd12726e001ea25dec133322d34cc4754cbc58f8
 
 COCOAPODS: 0.36.0.beta.2
