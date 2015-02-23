@@ -30,6 +30,7 @@
     return self;
 }
 
+
 -(CGSize)sizeThatFits:(CGSize)size {
     return [[UIScreen mainScreen] bounds].size;
 }

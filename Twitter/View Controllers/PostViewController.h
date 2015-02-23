@@ -10,4 +10,10 @@
 
 @interface PostViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIView *popUpView;
+
+-(void)showInView:(UIView *)parentView animated:(BOOL)animated;
+-(void)showAnimate;
+-(void)removeAnimate;
+
 @end

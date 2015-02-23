@@ -6,10 +6,10 @@
 //  Copyright (c) 2015 AP Fritts. All rights reserved.
 //
 
-#import "TweetCell.h"
+#import "TweetCellOld.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
 
-@interface TweetCell()
+@interface TweetCellOld()
 
 @property (weak, nonatomic) Tweet *tweet;
 @property (weak, nonatomic) IBOutlet UIView *tweetCardView;
@@ -19,7 +19,7 @@
 
 @end
 
-@implementation TweetCell
+@implementation TweetCellOld
 
 - (void)awakeFromNib {
     [super awakeFromNib];

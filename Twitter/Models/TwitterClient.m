@@ -77,8 +77,8 @@ NSString * const kTwitterBaseUrl = @"https://api.twitter.com";
 }
 
 -(void)loadTimelineSinceId:(NSNumber *)sinceId withCompletion:(void (^)(NSArray *tweets, NSError *error))completion {
-    completion([Tweet tweetsWithArray:[self loadInAir]], nil);
-    return;
+    //completion([Tweet tweetsWithArray:[self loadInAir]], nil);
+    //return;
     NSDictionary *params = nil;
     if (sinceId != nil) {
         params = @{@"since_id": sinceId, @"count": @"20"};
@@ -106,14 +106,14 @@ NSString * const kTwitterBaseUrl = @"https://api.twitter.com";
     }];
 }
 
--(void)postTweet:(Tweet *)tweet {
+-(void)postTweet:(Tweet *)tweet withCompletion:(void (^)(NSError *error))completion {
     NSDictionary *params = @{
-                             @"tweet": tweet.text
+                             @"status": tweet.text
                              };
     [self POST:@"1.1/statuses/update" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        // yay
+        completion(nil);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        //
+        completion(error);
     }];
 }
 

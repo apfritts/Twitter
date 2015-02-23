@@ -51,12 +51,13 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 120.0f;
 }
-*/
+ */
 
 -(void)loadTweets {
     [[TwitterClient sharedInstance] loadTimelineSinceId:nil withCompletion:^(NSArray *tweets, NSError *error) {
         self.tweets = tweets;
         [self.tableView reloadData];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, self.tableView.numberOfSections)] withRowAnimation:UITableViewRowAnimationAutomatic];
     }];
 }
 
@@ -68,6 +69,9 @@
 -(void)onCompose {
     //PostPopup *popup = [[PostPopup alloc] init];
     [self.navigationController pushViewController:[[PostViewController alloc] init] animated:YES];
+    //PostViewController *post = [[PostViewController alloc] init];
+    //[post.view setBounds:[[UIScreen mainScreen] bounds]];
+    //[post showInView:self.view animated:YES];
 }
 
 @end
