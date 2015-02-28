@@ -8,6 +8,7 @@
 
 #import "TweetViewController.h"
 #import "TweetCell.h"
+#import "PostViewController.h"
 
 @interface TweetViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -27,6 +28,8 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"TweetCell" bundle:nil] forCellReuseIdentifier:@"TweetCell"];
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemReply target:self action:@selector(onReplyTap)];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -39,9 +42,10 @@
     return cell;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    // @TODO: This needs to NOT be here!
-    return 150.0f;
+-(void)onReplyTap {
+    PostViewController *post = [[PostViewController alloc] init];
+    [post replyToTweet:self.tweet];
+    [post showPopupInViewController:self.parentViewController];
 }
 
 @end

@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-FontAwesome+iOS.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>122FE52573560128C38B30BC</key>
+		<key>01E46189BEC7F5E392172689</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>697F306C37B0F16CC19A34EB</key>
+		<key>1E1380FC81E867676BEDE8D1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E99AD2FC6B37FD6E5839C38D</key>
+		<key>6A6CB745EA6F924D8EE71DDB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7DD3CA6F069C9D2729622A82</key>
 		<dict>
 			<key>primary</key>
 			<true/>

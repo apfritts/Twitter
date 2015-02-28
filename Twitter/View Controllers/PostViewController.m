@@ -12,6 +12,7 @@
 
 @interface PostViewController ()
 
+@property (weak, nonatomic) IBOutlet UIView *popUpView;
 @property (weak, nonatomic) IBOutlet UIImageView *profilePic;
 @property (weak, nonatomic) IBOutlet UILabel *userName;
 @property (strong, nonatomic) UILabel *barButtonCount;
@@ -27,49 +28,21 @@
 @implementation PostViewController
 
 - (void)viewDidLoad {
+    NSLog(@"super viewDidLoad");
+    [super viewDidLoad];
+    NSLog(@"viewDidLoad");
+
     self.view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.6];
     self.popUpView.layer.cornerRadius = 10;
     self.popUpView.layer.shadowOpacity = 0.8;
     self.popUpView.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
     
-    [super viewDidLoad];
-    
     self.title = @"Post Tweet";
     [self.profilePic setImageWithURL:[NSURL URLWithString:[User currentUser].profile_image_url]];
     self.userName.text = [NSString stringWithFormat:@"%@ says:", [User currentUser].name];
-    
-    //[self.postButton actionsForTarget:self forControlEvent:UIControlEventTouchUpInside];
-    [self.postButton addTarget:self action:@selector(doYourPost) forControlEvents:UIControlEventTouchUpInside];
-}
-
--(void)doYourPost {
-    NSLog(@"posting");
-}
-
--(void)showAnimate {
-    self.view.transform = CGAffineTransformMakeScale(1.3, 1.3);
-    self.view.alpha = 0;
-    [UIView animateWithDuration:.25 animations:^{
-        self.view.alpha = 1;
-        self.view.transform = CGAffineTransformMakeScale(1, 1);
-    }];
-}
-
--(void)removeAnimate {
-    [UIView animateWithDuration:.25 animations:^{
-        self.view.transform = CGAffineTransformMakeScale(1.3, 1.3);
-        self.view.alpha = 0.0;
-    } completion:^(BOOL finished) {
-        if (finished) {
-            [self.view removeFromSuperview];
-        }
-    }];
 }
 
 - (IBAction)onPostTap:(id)sender {
-    NSLog(@"Got the post tap");
-    //[self removeAnimate];
-    return;
     // @TODO: require reply user name in tweet
     if (self.postText.text.length > 140) {
         // flash the barButtonItem
@@ -85,7 +58,7 @@
         if (error) {
             [[[UIAlertView alloc] initWithTitle:@"Yikes!" message:error.description delegate:nil cancelButtonTitle:@"Try again" otherButtonTitles:nil] show];
         } else {
-            [self.navigationController popViewControllerAnimated:YES];
+            [self closePopup];
         }
     }];
 }
@@ -102,15 +75,39 @@
 }
 
 - (IBAction)cancelTap:(UIGestureRecognizer *)sender {
-    [self removeAnimate];
+    [self closePopup];
 }
 
--(void)showInView:(UIView *)parentView animated:(BOOL)animated {
-    self.view.frame = parentView.frame;
-    [parentView addSubview:self.view];
-    if (animated) {
-        [self showAnimate];
-    }
+-(void)showPopupInViewController:(UIViewController *)parentViewController {
+    NSLog(@"showInView");
+    [parentViewController addChildViewController:self];
+    self.view.frame = parentViewController.view.frame;
+    [parentViewController.view addSubview:self.view];
+    
+    self.view.transform = CGAffineTransformMakeScale(1.9, 1.9);
+    self.view.alpha = 0;
+    [self didMoveToParentViewController:parentViewController];
+    
+    [UIView animateWithDuration:.25 animations:^{
+        self.view.alpha = 1;
+    }];
+    [UIView animateWithDuration:.25 animations:^{
+        self.view.transform = CGAffineTransformMakeScale(1, 1);
+    }];
+}
+
+-(void)closePopup {
+    NSLog(@"removeAnimate");
+    [self willMoveToParentViewController:nil];
+    [UIView animateWithDuration:.25 animations:^{
+        self.popUpView.transform = CGAffineTransformTranslate(CGAffineTransformMakeScale(0.3, 0.3), -200, -510);
+        self.view.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        if (finished) {
+            [self.view removeFromSuperview];
+            [self removeFromParentViewController];
+        }
+    }];
 }
 
 -(void)replyToTweet:(id)tweet {

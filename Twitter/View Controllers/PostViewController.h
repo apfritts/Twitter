@@ -11,12 +11,8 @@
 
 @interface PostViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIView *popUpView;
-
--(void)showInView:(UIView *)parentView animated:(BOOL)animated;
--(void)showAnimate;
--(void)removeAnimate;
-- (IBAction)onPostTap:(id)sender;
+-(void)showPopupInViewController:(UIViewController *)parentViewController;
+-(void)closePopup;
 -(void)replyToTweet:(Tweet *)tweet;
 
 @end
