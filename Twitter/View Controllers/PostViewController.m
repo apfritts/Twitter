@@ -17,9 +17,6 @@
 @property (strong, nonatomic) UILabel *barButtonCount;
 @property (weak, nonatomic) IBOutlet UITextView *postText;
 @property (weak, nonatomic) IBOutlet UIButton *postButton;
-- (IBAction)onPost:(id)sender;
-- (IBAction)textChanged:(id)sender;
-- (IBAction)cancelTap:(id)sender;
 
 @property (weak, nonatomic) Tweet *replyTweet;
 
@@ -38,13 +35,6 @@
     self.title = @"Post Tweet";
     [self.profilePic setImageWithURL:[NSURL URLWithString:[User currentUser].profile_image_url]];
     self.userName.text = [NSString stringWithFormat:@"%@ says:", [User currentUser].name];
-    //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Post" style:UIBarButtonItemStylePlain target:self action:@selector(onPost)];
-    //self.barButtonCount = [[UILabel alloc] init];
-    //self.barButtonCount = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 20)];
-    //UIView *barButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 30, 20)  ];
-    //[barButtonView addSubview:self.barButtonCount];
-    //[self textChanged:nil];
-    //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:barButtonView];
 }
 
 -(void)showAnimate {
@@ -62,16 +52,15 @@
         self.view.alpha = 0.0;
     } completion:^(BOOL finished) {
         if (finished) {
-            [self removeFromParentViewController];
+            [self.view removeFromSuperview];
         }
     }];
 }
 
--(void)onPost {
-    [self onPost:nil];
-}
-
-- (IBAction)onPost:(id)sender {
+- (IBAction)onPostTap:(id)sender {
+    NSLog(@"Got the post tap");
+    //[self removeAnimate];
+    return;
     // @TODO: require reply user name in tweet
     if (self.postText.text.length > 140) {
         // flash the barButtonItem
@@ -103,12 +92,12 @@
     }
 }
 
-- (IBAction)cancelTap:(id)sender {
-    //[self removeAnimate];
-    [self.navigationController popViewControllerAnimated:YES];
+- (IBAction)cancelTap:(UIGestureRecognizer *)sender {
+    [self removeAnimate];
 }
 
 -(void)showInView:(UIView *)parentView animated:(BOOL)animated {
+    self.view.frame = parentView.frame;
     [parentView addSubview:self.view];
     if (animated) {
         [self showAnimate];

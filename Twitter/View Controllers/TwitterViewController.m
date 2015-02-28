@@ -60,11 +60,6 @@
     [self.navigationController pushViewController:tvc animated:YES];
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    // @TODO: This needs to NOT be here!
-    return 150.0f;
-}
-
 -(void)loadTweets {
     [[TwitterClient sharedInstance] loadTimelineSinceId:nil withCompletion:^(NSArray *tweets, NSError *error) {
         [self.refreshControl endRefreshing];
@@ -81,10 +76,10 @@
 
 -(void)onCompose {
     //PostPopup *popup = [[PostPopup alloc] init];
-    [self.navigationController pushViewController:[[PostViewController alloc] init] animated:YES];
-    //PostViewController *post = [[PostViewController alloc] init];
-    //[post.view setBounds:[[UIScreen mainScreen] bounds]];
-    //[post showInView:self.view animated:YES];
+    //[self.navigationController pushViewController:[[PostViewController alloc] init] animated:YES];
+    PostViewController *post = [[PostViewController alloc] init];
+    [post showInView:self.parentViewController.view animated:YES];
+    //[post.view needsUpdateConstraints];
 }
 
 -(void)replyToTweet:(Tweet *)tweet {

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7515.2" systemVersion="14D72i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6750" systemVersion="14D87h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7512"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6735"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PostViewController">
@@ -34,7 +34,7 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="onPost:" destination="-1" eventType="touchUpInside" id="e42-ld-ACy"/>
+                                <action selector="onPostTap:" destination="-1" eventType="touchUpInside" id="HT8-hQ-BIT"/>
                             </connections>
                         </button>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MBy-i8-jdc">
@@ -75,16 +75,8 @@
                 <constraint firstAttribute="centerY" secondItem="iEE-8k-15s" secondAttribute="centerY" id="joL-NM-axs"/>
                 <constraint firstAttribute="centerX" secondItem="iEE-8k-15s" secondAttribute="centerX" id="usl-wo-59o"/>
             </constraints>
-            <connections>
-                <outletCollection property="gestureRecognizers" destination="Uxy-r4-fav" appends="YES" id="GSW-VK-O5Q"/>
-            </connections>
             <point key="canvasLocation" x="139" y="296"/>
         </view>
-        <tapGestureRecognizer id="Uxy-r4-fav">
-            <connections>
-                <action selector="cancelTap:" destination="-1" id="F1b-fO-kl0"/>
-            </connections>
-        </tapGestureRecognizer>
     </objects>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
