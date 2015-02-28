@@ -18,6 +18,8 @@
 @property (weak, nonatomic) IBOutlet UITextView *postText;
 @property (weak, nonatomic) IBOutlet UIButton *postButton;
 
+@property (weak, nonatomic) UIView *parentView;
+
 @property (weak, nonatomic) Tweet *replyTweet;
 
 @end
@@ -35,6 +37,13 @@
     self.title = @"Post Tweet";
     [self.profilePic setImageWithURL:[NSURL URLWithString:[User currentUser].profile_image_url]];
     self.userName.text = [NSString stringWithFormat:@"%@ says:", [User currentUser].name];
+    
+    //[self.postButton actionsForTarget:self forControlEvent:UIControlEventTouchUpInside];
+    [self.postButton addTarget:self action:@selector(doYourPost) forControlEvents:UIControlEventTouchUpInside];
+}
+
+-(void)doYourPost {
+    NSLog(@"posting");
 }
 
 -(void)showAnimate {

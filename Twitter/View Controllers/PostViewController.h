@@ -16,6 +16,7 @@
 -(void)showInView:(UIView *)parentView animated:(BOOL)animated;
 -(void)showAnimate;
 -(void)removeAnimate;
+- (IBAction)onPostTap:(id)sender;
 -(void)replyToTweet:(Tweet *)tweet;
 
 @end
