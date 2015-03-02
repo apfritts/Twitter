@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *replyButton;
 - (IBAction)likeTap:(id)sender;
 - (IBAction)replyTap:(id)sender;
+- (IBAction)userTap:(id)sender;
 
 @end
 
