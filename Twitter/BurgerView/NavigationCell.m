@@ -7,8 +7,6 @@
 //
 
 #import "NavigationCell.h"
-#import <FontAwesome+iOS/NSString+FontAwesome.h>
-#import <FontAwesome+iOS/UIFont+FontAwesome.h>
 
 @interface NavigationCell()
 
@@ -19,10 +17,9 @@
 
 @implementation NavigationCell
 
--(void)setItemIcon:(NSString *)icon andTitle:(NSString *)title {
-    NSString *faIcon = [NSString fontAwesomeIconStringForIconIdentifier:icon];
+-(void)setItemIcon:(FAIcon)icon andTitle:(NSString *)title {
     self.itemIcon.font = [UIFont fontWithName:@"FontAwesome" size:20];
-    self.itemIcon.text = faIcon;
+    self.itemIcon.text = [NSString fontAwesomeIconStringForEnum:icon];
     self.itemLabel.text = title;
 }
 

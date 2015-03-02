@@ -23,12 +23,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     if ([User currentUser] != nil) {
-        HamburgerViewController *burger = [[HamburgerViewController alloc] init];
-        TimelineViewController *twitter = [[TimelineViewController alloc] init];
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:twitter];
-        [burger setChildViewController:nav];
-        self.window.rootViewController = burger;
-        
+        self.window.rootViewController = [HamburgerViewController instance];
     } else {
         LoginViewController *login = [[LoginViewController alloc] init];
         self.window.rootViewController = login;

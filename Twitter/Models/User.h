@@ -21,6 +21,9 @@
 
 -(id)initWithDictionary:(NSDictionary *)dictionary;
 
+-(void)loadTweetsOlderThanId:(NSNumber *)maxId withCompletion:(void (^)(NSArray *tweets, NSError *error))completion;
+-(void)loadMentionsWithCompletion:(void (^)(NSArray *tweets, NSError *error))completion;
+
 +(User *)currentUser;
 +(void)setCurrentUser:(User *)user;
 

@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FontAwesome+iOS/NSString+FontAwesome.h>
 
 @interface NavigationCell : UITableViewCell
 
--(void)setItemIcon:(NSString *)icon andTitle:(NSString *)title;
+-(void)setItemIcon:(FAIcon)icon andTitle:(NSString *)title;
 
 @end

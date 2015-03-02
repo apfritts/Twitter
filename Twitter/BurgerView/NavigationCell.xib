@@ -15,13 +15,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WpF-BO-eY6">
-                        <rect key="frame" x="46" y="12" width="276" height="20.5"/>
+                        <rect key="frame" x="46" y="12" width="276" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="O" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bLx-xH-c9V">
-                        <rect key="frame" x="8" y="11" width="30" height="20.5"/>
+                        <rect key="frame" x="8" y="12" width="30" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20.5" id="Cgp-rj-j3V"/>
                             <constraint firstAttribute="width" constant="30" id="aHc-JG-J47"/>
@@ -33,10 +33,11 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="centerY" secondItem="WpF-BO-eY6" secondAttribute="centerY" id="3FO-oq-70D"/>
-                    <constraint firstItem="bLx-xH-c9V" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="BaC-EZ-Tcm"/>
+                    <constraint firstItem="bLx-xH-c9V" firstAttribute="top" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="BaC-EZ-Tcm"/>
                     <constraint firstItem="WpF-BO-eY6" firstAttribute="leading" secondItem="bLx-xH-c9V" secondAttribute="trailing" constant="8" id="D9n-KB-GyF"/>
+                    <constraint firstAttribute="centerY" secondItem="bLx-xH-c9V" secondAttribute="centerY" id="S1s-C5-d6Z"/>
                     <constraint firstItem="bLx-xH-c9V" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="hzQ-bj-DNH"/>
-                    <constraint firstAttribute="bottom" secondItem="bLx-xH-c9V" secondAttribute="bottom" constant="12.5" id="jOQ-Ry-CIV"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="bLx-xH-c9V" secondAttribute="bottom" constant="8" id="jOQ-Ry-CIV"/>
                     <constraint firstItem="WpF-BO-eY6" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="10" id="xqJ-w9-IXB"/>
                 </constraints>
             </tableViewCellContentView>

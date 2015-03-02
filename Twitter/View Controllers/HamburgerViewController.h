@@ -10,6 +10,9 @@
 
 @interface HamburgerViewController : UIViewController
 
--(void)setChildViewController:(UIViewController *)controller;
++(instancetype)instance;
+-(void)displayChildViewController:(UIViewController *)controller;
+-(void)openMenu;
+-(void)closeMenu;
 
 @end

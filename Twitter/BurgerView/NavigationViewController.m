@@ -7,19 +7,19 @@
 //
 
 #import "NavigationViewController.h"
-#import "User.h"
+#import "HamburgerViewController.h"
 #import "NavigationCell.h"
+#import "Navigation.h"
+#import "User.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
+#import <FontAwesome+iOS/NSString+FontAwesome.h>
 
 @interface NavigationViewController () <UITableViewDataSource, UITableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIView *tableHeaderView;
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
+@property (weak, nonatomic) IBOutlet UIImageView *profileBackgroundImage;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImage;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *followersLabel;
-@property (weak, nonatomic) IBOutlet UILabel *followingLabel;
-@property (weak, nonatomic) IBOutlet UILabel *tweetsLabel;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -29,19 +29,14 @@
     [super viewDidLoad];
     
     User *user = [User currentUser];
-    
-    [self.backgroundImage setImageWithURL:[NSURL URLWithString:user.profile_image_url]];
+    [self.profileBackgroundImage setImageWithURL:[NSURL URLWithString:user.background_image_url]];
     [self.profileImage setImageWithURL:[NSURL URLWithString:user.profile_image_url]];
     self.nameLabel.text = user.name;
-    self.followersLabel.text = [NSString stringWithFormat:@"%ld followers", (long)user.followers_count];
-    self.followingLabel.text = [NSString stringWithFormat:@"following %ld", (long)user.following_count];
-    self.tweetsLabel.text = [NSString stringWithFormat:@"%ld tweets", (long)user.tweets_count];
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     [self.tableView registerNib:[UINib nibWithNibName:@"NavigationCell" bundle:nil] forCellReuseIdentifier:@"NavigationCell"];
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.tableHeaderView = self.tableHeaderView;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -52,19 +47,39 @@
     NavigationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NavigationCell"];
     switch (indexPath.row) {
         case 0:
-            [cell setItemIcon:@"fa-settings" andTitle:@"Settings"];
+            [cell setItemIcon:FAIconHome andTitle:@"Home"];
             break;
         case 1:
-            [cell setItemIcon:@"fa-settings" andTitle:@"Settings"];
+            [cell setItemIcon:FAIconUser andTitle:@"Profile"];
             break;
         case 2:
-            [cell setItemIcon:@"fa-settings" andTitle:@"Settings"];
+            [cell setItemIcon:FAIconMicrophone andTitle:@"Mentions"];
             break;
         case 3:
-            [cell setItemIcon:@"fa-settings" andTitle:@"Settings"];
+            [cell setItemIcon:FAIconSignout andTitle:@"Logout"];
             break;
     }
     return cell;
+}
+
+-(BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    switch (indexPath.row) {
+        case 0:
+            [Navigation navigateToHome];
+            break;
+        case 1:
+            [Navigation navigateToProfile:nil];
+            break;
+        case 2: {
+            [Navigation navigateToMentions];
+            break;
+        }
+        case 3:
+            [Navigation navigateToLogin];
+            break;
+    }
+    [[HamburgerViewController instance] closeMenu];
+    return NO;
 }
 
 @end

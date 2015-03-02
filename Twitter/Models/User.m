@@ -7,6 +7,7 @@
 //
 
 #import "User.h"
+#import "TwitterClient.h"
 
 @interface User()
 
@@ -26,12 +27,55 @@
         self.background_image_url = dictionary[@"profile_background_image_url"];
         self.bio = dictionary[@"description"];
         self.followers_count = [dictionary[@"followers_count"] integerValue];
-        self.following_count = [dictionary[@"following_count"] integerValue];
-        self.tweets_count = [dictionary[@"tweets_count"] integerValue];
+        self.following_count = [dictionary[@"friends_count"] integerValue];
+        self.tweets_count = [dictionary[@"statuses_count"] integerValue];
     }
     return self;
 }
 
+-(void)loadTweetsOlderThanId:(NSNumber *)maxId withCompletion:(void (^)(NSArray *, NSError *))completion {
+    NSDictionary *params;
+    if (maxId == nil) {
+        params = @{@"screen_name": self.screen_name};
+    } else {
+        params = @{@"screen_name": self.screen_name, @"max_id": maxId};
+    }
+    [[TwitterClient sharedInstance] GET:@"1.1/statuses/user_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSArray *tweets = nil;
+        NSError *error = nil;
+        @try {
+            tweets = [Tweet tweetsWithArray:responseObject];
+        }
+        @catch (NSError *e) {
+            error = e;
+        }
+        @finally {
+            completion(tweets, error);
+        }
+
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        completion(nil, error);
+    }];
+}
+
+-(void)loadMentionsWithCompletion:(void (^)(NSArray *tweets, NSError *error))completion {
+    [[TwitterClient sharedInstance] GET:@"1.1/statuses/mentions_timeline.json" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSArray *tweets = nil;
+        NSError *error = nil;
+        @try {
+            tweets = [Tweet tweetsWithArray:responseObject];
+        }
+        @catch (NSError *e) {
+            error = e;
+        }
+        @finally {
+            completion(tweets, error);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Failed to retrieve timeline: %@", error);
+        completion(nil, error);
+    }];
+}
 
 # pragma mark - Static Methods
 

@@ -8,7 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "Tweet.h"
+#import "TweetCell.h"
+
+@class TimelineViewController;
+
+@protocol TimelineViewControllerDelegate <NSObject>
+
+-(void)loadTweets:(NSArray *)tweets;
+
+@end
 
 @interface TimelineViewController : UIViewController
+
+@property (strong, nonatomic) void (^loadTweetsHandler)(id<TimelineViewControllerDelegate> delegate);
 
 @end

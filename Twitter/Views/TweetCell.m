@@ -8,20 +8,20 @@
 
 #import "TweetCell.h"
 #import "TwitterClient.h"
-#import <AFNetworking/UIImageView+AFNetworking.h>
+#import <FontAwesome+iOS/NSString+FontAwesome.h>
+#import <AFNetworking/UIButton+AFNetworking.h>
 
 @interface TweetCell()
 
 @property (weak, nonatomic) Tweet *tweet;
 @property (weak, nonatomic) IBOutlet UIView *tweetCardView;
 @property (weak, nonatomic) IBOutlet UILabel *userName;
-@property (weak, nonatomic) IBOutlet UIImageView *profileImage;
+@property (weak, nonatomic) IBOutlet UIButton *profileImage;
 @property (weak, nonatomic) IBOutlet UILabel *tweetText;
-@property (weak, nonatomic) IBOutlet UILabel *retweetLabel;
 @property (weak, nonatomic) IBOutlet UIButton *retweetButton;
 - (IBAction)retweetTap:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
-@property (weak, nonatomic) IBOutlet UILabel *likeLabel;
+@property (weak, nonatomic) IBOutlet UIButton *replyButton;
 - (IBAction)likeTap:(id)sender;
 - (IBAction)replyTap:(id)sender;
 
@@ -31,7 +31,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.tweetText.preferredMaxLayoutWidth = self.tweetCardView.frame.size.width;
+    //self.tweetText.preferredMaxLayoutWidth = self.tweetCardView.frame.size.width;
     self.tweetCardView.clipsToBounds = YES;
 }
 
@@ -39,22 +39,26 @@
     self.tweet = tweet;
     
     NSURL *url = [NSURL URLWithString:tweet.user.profile_image_url];
-    [self.profileImage setImageWithURL:url];
+    [self.profileImage setImageForState:0 withURL:url];
     self.userName.text = [NSString stringWithFormat:@"%@ at %@", tweet.user.screen_name, tweet.created];
     self.tweetText.text = tweet.text;
     [self.tweetText sizeToFit];
     
     if (self.tweet.favorited) {
-        self.likeButton.hidden = YES;
+        [self.likeButton setTitleColor:[UIColor colorWithRed:41 green:47 blue:51 alpha:1] forState:UIControlStateNormal];
     } else {
-        self.likeLabel.hidden = YES;
+        [self.likeButton setTitleColor:[UIColor colorWithRed:85 green:172 blue:238 alpha:1] forState:UIControlStateNormal];
     }
     
     if (self.tweet.retweeted) {
-        self.retweetButton.hidden = YES;
+        [self.retweetButton setTitleColor:[UIColor colorWithRed:41 green:47 blue:51 alpha:1] forState:UIControlStateNormal];
     } else {
-        self.retweetLabel.hidden = YES;
+        [self.retweetButton setTitleColor:[UIColor colorWithRed:85 green:172 blue:238 alpha:1] forState:UIControlStateNormal];
     }
+    
+    [self.retweetButton setTitle:[NSString fontAwesomeIconStringForEnum:FAIconRetweet] forState:UIControlStateNormal];
+    [self.likeButton setTitle:[NSString fontAwesomeIconStringForEnum:FAIconThumbsUp] forState:UIControlStateNormal];
+    [self.replyButton setTitle:[NSString fontAwesomeIconStringForEnum:FAIconReply] forState:UIControlStateNormal];
 }
 
 -(Tweet *)getTweet {
@@ -62,8 +66,15 @@
 }
 
 -(void)layoutSubviews {
-    [super layoutSubviews];
+    self.userName.preferredMaxLayoutWidth = self.tweetCardView.frame.size.width - self.profileImage.frame.size.width - 16;
     self.tweetText.preferredMaxLayoutWidth = self.tweetCardView.frame.size.width;
+    [super layoutSubviews];
+}
+
+- (IBAction)userTap:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(didTapUser:)]) {
+        [self.delegate didTapUser:self.tweet];
+    }
 }
 
 - (IBAction)retweetTap:(id)sender {
@@ -73,9 +84,9 @@
         } else {
             self.tweet.retweeted = YES;
             if (self.tweet.retweeted) {
-                self.retweetButton.hidden = YES;
+                [self.retweetButton setTitleColor:[UIColor colorWithRed:41 green:47 blue:51 alpha:1] forState:UIControlStateNormal];
             } else {
-                self.retweetLabel.hidden = YES;
+                [self.retweetButton setTitleColor:[UIColor colorWithRed:85 green:172 blue:238 alpha:1] forState:UIControlStateNormal];
             }
         }
     }];
@@ -86,9 +97,9 @@
         if (error) {
             self.tweet.favorited = YES;
             if (self.tweet.favorited) {
-                self.likeButton.hidden = YES;
+                [self.likeButton setTitleColor:[UIColor colorWithRed:41 green:47 blue:51 alpha:1] forState:UIControlStateNormal];
             } else {
-                self.likeLabel.hidden = YES;
+                [self.likeButton setTitleColor:[UIColor colorWithRed:85 green:172 blue:238 alpha:1] forState:UIControlStateNormal];
             }
         }
     }];

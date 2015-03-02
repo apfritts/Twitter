@@ -8,13 +8,13 @@ Time spent: `10`
 
 #### Redux
 
-- [ ] Hamburger menu
+- [X] Hamburger menu
   - [X] Dragging anywhere in the view should reveal the menu.
-  - [ ] The menu should include links to your profile, the home timeline, and the mentions view.
-  - [ ] The menu can look similar to the LinkedIn menu below or feel free to take liberty with the UI.
-- [ ] Profile page
-  - [ ] Contains the user header view
-  - [ ] Contains a section with the users basic stats: # tweets, # following, # followers
+  - [X] The menu should include links to your profile, the home timeline, and the mentions view.
+  - [X] The menu can look similar to the LinkedIn menu below or feel free to take liberty with the UI.
+- [X] Profile page
+  - [X] Contains the user header view
+  - [X] Contains a section with the users basic stats: # tweets, # following, # followers
   - [ ] Optional: Implement the paging view for the user description.
   - [ ] Optional: As the paging view moves, increase the opacity of the background screen. See the actual Twitter app for this effect
   - [ ] Optional: Pulling down the profile page should blur and resize the header image.

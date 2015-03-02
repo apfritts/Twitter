@@ -18,6 +18,9 @@
 		8F11AA691AA393530099DBA3 /* NavigationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F11AA671AA393530099DBA3 /* NavigationViewController.xib */; };
 		8F11AA6D1AA3E7DB0099DBA3 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F11AA6B1AA3E7DB0099DBA3 /* ProfileViewController.m */; };
 		8F11AA6E1AA3E7DB0099DBA3 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F11AA6C1AA3E7DB0099DBA3 /* ProfileViewController.xib */; };
+		8F11AA7C1AA458300099DBA3 /* ProfileHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F11AA7A1AA458300099DBA3 /* ProfileHeader.m */; };
+		8F11AA7D1AA458300099DBA3 /* ProfileHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F11AA7B1AA458300099DBA3 /* ProfileHeader.xib */; };
+		8F11AA801AA46E180099DBA3 /* Navigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F11AA7F1AA46E180099DBA3 /* Navigation.m */; };
 		8F1642D71A9AE017009B2485 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1642D51A9AE017009B2485 /* ComposeViewController.m */; };
 		8F1642D81A9AE017009B2485 /* ComposeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F1642D61A9AE017009B2485 /* ComposeViewController.xib */; };
 		8F214CD81A95692D00C553F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F214CD71A95692D00C553F5 /* main.m */; };
@@ -64,6 +67,11 @@
 		8F11AA6A1AA3E7DB0099DBA3 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		8F11AA6B1AA3E7DB0099DBA3 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		8F11AA6C1AA3E7DB0099DBA3 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		8F11AA791AA458300099DBA3 /* ProfileHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileHeader.h; sourceTree = "<group>"; };
+		8F11AA7A1AA458300099DBA3 /* ProfileHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileHeader.m; sourceTree = "<group>"; };
+		8F11AA7B1AA458300099DBA3 /* ProfileHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileHeader.xib; sourceTree = "<group>"; };
+		8F11AA7E1AA46E180099DBA3 /* Navigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Navigation.h; sourceTree = "<group>"; };
+		8F11AA7F1AA46E180099DBA3 /* Navigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Navigation.m; sourceTree = "<group>"; };
 		8F1642D41A9AE017009B2485 /* ComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
 		8F1642D51A9AE017009B2485 /* ComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
 		8F1642D61A9AE017009B2485 /* ComposeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComposeViewController.xib; sourceTree = "<group>"; };
@@ -209,6 +217,8 @@
 				8F214CFD1A9569D300C553F5 /* TwitterClient.m */,
 				8F214D101A957A5700C553F5 /* User.h */,
 				8F214D111A957A5700C553F5 /* User.m */,
+				8F11AA7E1AA46E180099DBA3 /* Navigation.h */,
+				8F11AA7F1AA46E180099DBA3 /* Navigation.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -241,6 +251,9 @@
 				8F214D061A9569D300C553F5 /* TweetCell.h */,
 				8F214D071A9569D300C553F5 /* TweetCell.m */,
 				8F214D081A9569D300C553F5 /* TweetCell.xib */,
+				8F11AA791AA458300099DBA3 /* ProfileHeader.h */,
+				8F11AA7A1AA458300099DBA3 /* ProfileHeader.m */,
+				8F11AA7B1AA458300099DBA3 /* ProfileHeader.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -344,6 +357,7 @@
 				8F11AA6E1AA3E7DB0099DBA3 /* ProfileViewController.xib in Resources */,
 				8F11AA641AA2A1530099DBA3 /* NavigationCell.xib in Resources */,
 				8F214CE61A95692D00C553F5 /* LaunchScreen.xib in Resources */,
+				8F11AA7D1AA458300099DBA3 /* ProfileHeader.xib in Resources */,
 				8F214CE31A95692D00C553F5 /* Images.xcassets in Resources */,
 				8F11AA691AA393530099DBA3 /* NavigationViewController.xib in Resources */,
 				8F214D0B1A9569D300C553F5 /* LoginViewController.xib in Resources */,
@@ -402,7 +416,9 @@
 				8F214D121A957A5700C553F5 /* User.m in Sources */,
 				8F214CDB1A95692D00C553F5 /* AppDelegate.m in Sources */,
 				8F11AA6D1AA3E7DB0099DBA3 /* ProfileViewController.m in Sources */,
+				8F11AA7C1AA458300099DBA3 /* ProfileHeader.m in Sources */,
 				8F214D151A957E1400C553F5 /* Tweet.m in Sources */,
+				8F11AA801AA46E180099DBA3 /* Navigation.m in Sources */,
 				8F214D091A9569D300C553F5 /* TwitterClient.m in Sources */,
 				8F11AA181AA24CD80099DBA3 /* TweetViewController.m in Sources */,
 				8F11AA681AA393530099DBA3 /* NavigationViewController.m in Sources */,
