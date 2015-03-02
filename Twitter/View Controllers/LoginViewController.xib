@@ -6,6 +6,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController">
             <connections>
+                <outlet property="errorLabel" destination="2mX-RF-IZY" id="1f2-dL-fsj"/>
+                <outlet property="instructionLabel" destination="3he-Bv-C9C" id="NZS-hu-kas"/>
+                <outlet property="twitterLogo" destination="LNe-OQ-gg5" id="hG1-ch-JxY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -14,24 +17,57 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Mr-bc-QO3">
-                    <rect key="frame" x="100" y="269" width="121" height="30"/>
-                    <state key="normal" title="Login with Twitter">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="loginTap:" destination="-1" eventType="touchUpInside" id="hiG-HS-o1c"/>
-                    </connections>
-                </button>
+                <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Twitter" translatesAutoresizingMaskIntoConstraints="NO" id="LNe-OQ-gg5">
+                    <rect key="frame" x="110" y="234" width="100" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="NvG-UH-Wj4"/>
+                        <constraint firstAttribute="width" constant="100" id="jB1-vM-ab0"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to Twitter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3he-Bv-C9C">
+                    <rect key="frame" x="101" y="364" width="118" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2mX-RF-IZY">
+                    <rect key="frame" x="139" y="394" width="42" height="20.5"/>
+                    <attributedString key="attributedText">
+                        <fragment content="Label">
+                            <attributes>
+                                <color key="NSColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.33333333329999998" green="0.67450980390000004" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <gestureRecognizers/>
             <constraints>
-                <constraint firstAttribute="centerX" secondItem="5Mr-bc-QO3" secondAttribute="centerX" id="8xL-gE-Jj8"/>
-                <constraint firstAttribute="centerY" secondItem="5Mr-bc-QO3" secondAttribute="centerY" id="jFE-Ai-t1H"/>
+                <constraint firstItem="3he-Bv-C9C" firstAttribute="top" secondItem="LNe-OQ-gg5" secondAttribute="bottom" constant="30" id="Ps2-c8-Su2"/>
+                <constraint firstAttribute="centerY" secondItem="LNe-OQ-gg5" secondAttribute="centerY" id="Qsu-hX-tLm"/>
+                <constraint firstAttribute="centerX" secondItem="LNe-OQ-gg5" secondAttribute="centerX" id="Whh-nK-M4C"/>
+                <constraint firstAttribute="centerX" secondItem="2mX-RF-IZY" secondAttribute="centerX" id="jlj-9D-Yvn"/>
+                <constraint firstItem="2mX-RF-IZY" firstAttribute="top" secondItem="3he-Bv-C9C" secondAttribute="bottom" constant="10" id="kx4-d8-4h6"/>
+                <constraint firstAttribute="centerX" secondItem="3he-Bv-C9C" secondAttribute="centerX" id="qbj-QY-hTx"/>
             </constraints>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="XfS-gz-h5O" appends="YES" id="IV2-oR-xtp"/>
+            </connections>
             <point key="canvasLocation" x="245" y="675"/>
         </view>
+        <tapGestureRecognizer id="XfS-gz-h5O">
+            <connections>
+                <action selector="loginTap:" destination="-1" id="11i-b1-vS5"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
+    <resources>
+        <image name="Twitter" width="569" height="463"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

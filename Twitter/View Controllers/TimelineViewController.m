@@ -6,15 +6,15 @@
 //  Copyright (c) 2015 AP Fritts. All rights reserved.
 //
 
-#import "TwitterViewController.h"
+#import "TimelineViewController.h"
 #import "LoginViewController.h"
 #import "TwitterClient.h"
 #import "TweetCell.h"
-#import "PostViewController.h"
+#import "ComposeViewController.h"
 #import "TweetViewController.h"
 #import <FontAwesome+iOS/UIImage+FontAwesome.h>
 
-@interface TwitterViewController () <UITableViewDataSource, UITableViewDelegate, TweetCellDelegate>
+@interface TimelineViewController () <UITableViewDataSource, UITableViewDelegate, TweetCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *tweets;
@@ -25,7 +25,7 @@
 
 @end
 
-@implementation TwitterViewController
+@implementation TimelineViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -93,12 +93,12 @@
 }
 
 -(void)onCompose {
-    PostViewController *post = [[PostViewController alloc] init];
+    ComposeViewController *post = [[ComposeViewController alloc] init];
     [post showPopupInViewController:self.parentViewController];
 }
 
 -(void)replyToTweet:(Tweet *)tweet {
-    PostViewController *post = [[PostViewController alloc] init];
+    ComposeViewController *post = [[ComposeViewController alloc] init];
     [post replyToTweet:tweet];
     [post showPopupInViewController:self.parentViewController];
 }

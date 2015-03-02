@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Tweet.h"
 
-@interface PostViewController : UIViewController
+@interface ComposeViewController : UIViewController
 
 -(void)showPopupInViewController:(UIViewController *)parentViewController;
 -(void)closePopup;

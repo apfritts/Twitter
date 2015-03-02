@@ -8,7 +8,8 @@
 
 #import "AppDelegate.h"
 #import "LoginViewController.h"
-#import "TwitterViewController.h"
+#import "TimelineViewController.h"
+#import "HamburgerViewController.h"
 #import "TwitterClient.h"
 #import "User.h"
 
@@ -22,9 +23,12 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     if ([User currentUser] != nil) {
-        TwitterViewController *twitter = [[TwitterViewController alloc] init];
+        HamburgerViewController *burger = [[HamburgerViewController alloc] init];
+        TimelineViewController *twitter = [[TimelineViewController alloc] init];
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:twitter];
-        self.window.rootViewController = nav;
+        [burger setChildViewController:nav];
+        self.window.rootViewController = burger;
+        
     } else {
         LoginViewController *login = [[LoginViewController alloc] init];
         self.window.rootViewController = login;

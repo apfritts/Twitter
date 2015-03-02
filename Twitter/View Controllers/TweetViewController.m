@@ -8,7 +8,7 @@
 
 #import "TweetViewController.h"
 #import "TweetCell.h"
-#import "PostViewController.h"
+#import "ComposeViewController.h"
 
 @interface TweetViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -43,7 +43,7 @@
 }
 
 -(void)onReplyTap {
-    PostViewController *post = [[PostViewController alloc] init];
+    ComposeViewController *post = [[ComposeViewController alloc] init];
     [post replyToTweet:self.tweet];
     [post showPopupInViewController:self.parentViewController];
 }

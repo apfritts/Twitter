@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6735"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TwitterViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TimelineViewController">
             <connections>
                 <outlet property="tableView" destination="1Gu-qe-oFT" id="3QR-26-ib9"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -25,6 +25,7 @@
                 <view hidden="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="693-So-4vw">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
                 </view>
                 <view hidden="YES" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3XD-w4-dxR">
                     <rect key="frame" x="85" y="193" width="150" height="182"/>
@@ -46,6 +47,7 @@
                         </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
                     <constraints>
                         <constraint firstItem="SQO-gW-aUt" firstAttribute="leading" secondItem="3XD-w4-dxR" secondAttribute="leading" constant="10" id="Cn8-cN-yFY"/>
                         <constraint firstAttribute="bottom" secondItem="v6n-qx-cXJ" secondAttribute="bottom" constant="10" id="Cpc-b1-rPu"/>

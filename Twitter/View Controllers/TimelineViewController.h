@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "Tweet.h"
 
-@interface TwitterViewController : UIViewController
+@interface TimelineViewController : UIViewController
 
 @end

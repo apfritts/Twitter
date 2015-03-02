@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6750" systemVersion="14D87h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6735"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HamburgerViewController">
+            <connections>
+                <outlet property="childView" destination="Klh-WP-713" id="FcW-J1-hN8"/>
+                <outlet property="navigationView" destination="SZG-Ei-TPX" id="iEk-G4-b0z"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Klh-WP-713">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SZG-Ei-TPX">
+                    <rect key="frame" x="80" y="142" width="160" height="284"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Klh-WP-713" secondAttribute="bottom" id="3XR-NF-Qrw"/>
+                <constraint firstItem="Klh-WP-713" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="eNk-uK-tiF"/>
+                <constraint firstAttribute="trailing" secondItem="Klh-WP-713" secondAttribute="trailing" id="eZJ-Hf-eIR"/>
+                <constraint firstItem="Klh-WP-713" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="mq0-hu-jlD"/>
+            </constraints>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="ClH-s3-BLw" appends="YES" id="0XI-ja-KJY"/>
+            </connections>
+            <point key="canvasLocation" x="325" y="305"/>
+        </view>
+        <panGestureRecognizer minimumNumberOfTouches="1" id="ClH-s3-BLw">
+            <connections>
+                <action selector="onEdgePan:" destination="-1" id="ikq-k5-bjg"/>
+            </connections>
+        </panGestureRecognizer>
+    </objects>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

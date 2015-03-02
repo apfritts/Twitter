@@ -6,11 +6,11 @@
 //  Copyright (c) 2015 AP Fritts. All rights reserved.
 //
 
-#import "PostViewController.h"
+#import "ComposeViewController.h"
 #import "TwitterClient.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
 
-@interface PostViewController ()
+@interface ComposeViewController ()
 
 @property (weak, nonatomic) IBOutlet UIView *popUpView;
 @property (weak, nonatomic) IBOutlet UIImageView *profilePic;
@@ -25,7 +25,7 @@
 
 @end
 
-@implementation PostViewController
+@implementation ComposeViewController
 
 - (void)viewDidLoad {
     NSLog(@"super viewDidLoad");
