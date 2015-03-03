@@ -22,6 +22,7 @@
             [delegate loadTweets:tweets];
         }];
     }];
+    timeline.title = @"Timeline";
     [[HamburgerViewController instance] displayChildViewController:timeline];
 }
 
@@ -36,7 +37,17 @@
 
 +(void)navigateToLogin {
     [User setCurrentUser:nil];
-    [[HamburgerViewController instance].parentViewController presentViewController:[[LoginViewController alloc] init] animated:YES completion:nil];
+    //[[HamburgerViewController instance].parentViewController presentViewController:[[LoginViewController alloc] init] animated:YES completion:nil];
+    UIWindow *app = [[UIApplication sharedApplication] keyWindow];
+    NSArray *subviews = [app subviews];
+    LoginViewController *login = [[LoginViewController alloc] init];
+    login.view.frame = app.frame;
+    app.rootViewController = login;
+    [app addSubview:login.view];
+    [HamburgerViewController reset];
+    for (UIView *subview in subviews) {
+        [subview removeFromSuperview];
+    }
 }
 
 +(void)navigateToMentions {
@@ -46,6 +57,7 @@
             [delegate loadTweets:tweets];
         }];
     }];
+    timeline.title = @"Mentions";
     [[HamburgerViewController instance] displayChildViewController:timeline];
 }
 

@@ -11,6 +11,7 @@
 @interface HamburgerViewController : UIViewController
 
 +(instancetype)instance;
++(void)reset;
 -(void)displayChildViewController:(UIViewController *)controller;
 -(void)openMenu;
 -(void)closeMenu;

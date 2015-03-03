@@ -28,24 +28,28 @@
 @end
 
 @implementation HamburgerViewController
+static HamburgerViewController *_instance = nil;
 
 +(instancetype)instance {
-    static HamburgerViewController *instance = nil;
     static dispatch_once_t onceToken;
     
     dispatch_once(&onceToken, ^{
-        if (instance == nil) {
-            instance = [[HamburgerViewController alloc] init];
+        if (_instance == nil) {
+            [HamburgerViewController reset];
         }
     });
-    return instance;
+    return _instance;
+}
+
++(void)reset {
+    _instance = [[HamburgerViewController alloc] init];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     CGSize screenSize = [[UIScreen mainScreen] bounds].size;
-    CGFloat menuWidth = screenSize.width * 0.7;
+    CGFloat menuWidth = screenSize.width * 0.65;
     NSLog(@"%f", menuWidth);
     
     self.openPosition = CGRectMake(0, 0, menuWidth, screenSize.height);

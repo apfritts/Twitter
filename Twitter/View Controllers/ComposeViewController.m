@@ -37,9 +37,17 @@
     self.popUpView.layer.shadowOpacity = 0.8;
     self.popUpView.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
     
-    self.title = @"Post Tweet";
     [self.profilePic setImageWithURL:[NSURL URLWithString:[User currentUser].profile_image_url]];
     self.userName.text = [NSString stringWithFormat:@"%@ says:", [User currentUser].name];
+    if (self.replyTweet != nil) {
+        self.postText.text = [NSString stringWithFormat:@"@%@: ", self.replyTweet.user.screen_name];
+    }
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self.postText becomeFirstResponder];
 }
 
 - (IBAction)onPostTap:(id)sender {

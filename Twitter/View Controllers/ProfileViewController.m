@@ -38,19 +38,24 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"TweetCell" bundle:nil] forCellReuseIdentifier:@"TweetCell"];
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.profileBackgroundImage setImageWithURL:[NSURL URLWithString:self.user.background_image_url]];
+    [self.profileImage setImageWithURL:[NSURL URLWithString:self.user.profile_image_url]];
+    self.nameLabel.text = self.user.name;
+    self.followersLabel.text = [NSString stringWithFormat:@"%ld followers", self.user.followers_count];
+    [self.followingLabel setText:[NSString stringWithFormat:@"Following %ld", self.user.following_count]];
+    self.tweetsLabel.text = [NSString stringWithFormat:@"%ld tweets", self.user.tweets_count];
+    [self setTitle:[NSString stringWithFormat:@"@%@", self.user.screen_name]];
+}
+
 -(void)updateViewWithUser:(User *)user {
     self.user = user;
     [self.user loadTweetsOlderThanId:nil withCompletion:^(NSArray *tweets, NSError *error) {
         self.tweets = tweets;
         [self.tableView reloadData];
     }];
-    [self.profileBackgroundImage setImageWithURL:[NSURL URLWithString:user.background_image_url]];
-    [self.profileImage setImageWithURL:[NSURL URLWithString:user.profile_image_url]];
-    self.nameLabel.text = user.name;
-    self.followersLabel.text = [NSString stringWithFormat:@"%ld followers", user.followers_count];
-    self.followingLabel.text = [NSString stringWithFormat:@"Following %ld", user.following_count];
-    self.tweetsLabel.text = [NSString stringWithFormat:@"%ld tweets", user.tweets_count];
-    [self setTitle:[NSString stringWithFormat:@"@%@", user.screen_name]];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

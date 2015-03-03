@@ -32,8 +32,9 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    //self.tweetText.preferredMaxLayoutWidth = self.tweetCardView.frame.size.width;
-    self.tweetCardView.clipsToBounds = YES;
+    self.tweetCardView.layer.cornerRadius = 4;
+    self.profileImage.layer.cornerRadius = 2;
+    self.tweetText.preferredMaxLayoutWidth = self.tweetCardView.frame.size.width;
 }
 
 -(void)updateViewWithTweet:(Tweet *)tweet {
@@ -46,16 +47,18 @@
     [self.tweetText sizeToFit];
     
     if (self.tweet.favorited) {
-        [self.likeButton setTitleColor:[UIColor colorWithRed:41 green:47 blue:51 alpha:1] forState:UIControlStateNormal];
+        [self.likeButton setTitleColor:[UIColor colorWithRed:(0/255.0) green:(128/255.0) blue:(64/255.0) alpha:1.0] forState:UIControlStateNormal];
     } else {
-        [self.likeButton setTitleColor:[UIColor colorWithRed:85 green:172 blue:238 alpha:1] forState:UIControlStateNormal];
+        [self.likeButton setTitleColor:[UIColor colorWithRed:(85/255.0) green:(172/255.0) blue:(238/255.0) alpha:1.0] forState:UIControlStateNormal];
     }
     
     if (self.tweet.retweeted) {
-        [self.retweetButton setTitleColor:[UIColor colorWithRed:41 green:47 blue:51 alpha:1] forState:UIControlStateNormal];
+        [self.retweetButton setTitleColor:[UIColor colorWithRed:(0/255.0) green:(128/255.0) blue:(64/255.0) alpha:1.0] forState:UIControlStateNormal];
     } else {
-        [self.retweetButton setTitleColor:[UIColor colorWithRed:85 green:172 blue:238 alpha:1] forState:UIControlStateNormal];
+        [self.retweetButton setTitleColor:[UIColor colorWithRed:(85/255.0) green:(172/255.0) blue:(238/255.0) alpha:1.0] forState:UIControlStateNormal];
     }
+    
+    [self.replyButton setTitleColor:[UIColor colorWithRed:(85/255.0) green:(172/255.0) blue:(238/255.0) alpha:1.0] forState:UIControlStateNormal];
     
     [self.retweetButton setTitle:[NSString fontAwesomeIconStringForEnum:FAIconRetweet] forState:UIControlStateNormal];
     [self.likeButton setTitle:[NSString fontAwesomeIconStringForEnum:FAIconThumbsUp] forState:UIControlStateNormal];
@@ -67,9 +70,8 @@
 }
 
 -(void)layoutSubviews {
-    self.userName.preferredMaxLayoutWidth = self.tweetCardView.frame.size.width - self.profileImage.frame.size.width - 16;
-    self.tweetText.preferredMaxLayoutWidth = self.tweetCardView.frame.size.width;
     [super layoutSubviews];
+    self.tweetText.preferredMaxLayoutWidth = self.tweetCardView.frame.size.width;
 }
 
 - (IBAction)userTap:(id)sender {
@@ -79,31 +81,27 @@
 }
 
 - (IBAction)retweetTap:(id)sender {
+    self.tweet.retweeted = !self.tweet.retweeted;
+    if (self.tweet.retweeted) {
+        [self.retweetButton setTitleColor:[UIColor colorWithRed:(0/255.0) green:(128/255.0) blue:(64/255.0) alpha:1.0] forState:UIControlStateNormal];
+    } else {
+        [self.retweetButton setTitleColor:[UIColor colorWithRed:(85/255.0) green:(172/255.0) blue:(238/255.0) alpha:1.0] forState:UIControlStateNormal];
+    }
     [[TwitterClient sharedInstance] reTweet:self.tweet withCompletion:^(NSError *error) {
         if (error) {
             NSLog(@"%@", error);
-        } else {
-            self.tweet.retweeted = YES;
-            if (self.tweet.retweeted) {
-                [self.retweetButton setTitleColor:[UIColor colorWithRed:41 green:47 blue:51 alpha:1] forState:UIControlStateNormal];
-            } else {
-                [self.retweetButton setTitleColor:[UIColor colorWithRed:85 green:172 blue:238 alpha:1] forState:UIControlStateNormal];
-            }
         }
     }];
 }
 
 - (IBAction)likeTap:(id)sender {
-    [[TwitterClient sharedInstance] favoriteTweet:self.tweet withCompletion:^(NSError *error) {
-        if (error) {
-            self.tweet.favorited = YES;
-            if (self.tweet.favorited) {
-                [self.likeButton setTitleColor:[UIColor colorWithRed:41 green:47 blue:51 alpha:1] forState:UIControlStateNormal];
-            } else {
-                [self.likeButton setTitleColor:[UIColor colorWithRed:85 green:172 blue:238 alpha:1] forState:UIControlStateNormal];
-            }
-        }
-    }];
+    self.tweet.favorited = !self.tweet.favorited;
+    if (self.tweet.favorited) {
+        [self.likeButton setTitleColor:[UIColor colorWithRed:(0/255.0) green:(128/255.0) blue:(64/255.0) alpha:1.0] forState:UIControlStateNormal];
+    } else {
+        [self.likeButton setTitleColor:[UIColor colorWithRed:(85/255.0) green:(172/255.0) blue:(238/255.0) alpha:1.0] forState:UIControlStateNormal];
+    }
+    [[TwitterClient sharedInstance] favoriteTweet:self.tweet withCompletion:nil];
 }
 
 - (IBAction)replyTap:(id)sender {

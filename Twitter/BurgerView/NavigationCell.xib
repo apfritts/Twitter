@@ -23,7 +23,6 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="O" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bLx-xH-c9V">
                         <rect key="frame" x="8" y="12" width="30" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="20.5" id="Cgp-rj-j3V"/>
                             <constraint firstAttribute="width" constant="30" id="aHc-JG-J47"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -36,7 +35,7 @@
                     <constraint firstItem="bLx-xH-c9V" firstAttribute="top" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="BaC-EZ-Tcm"/>
                     <constraint firstItem="WpF-BO-eY6" firstAttribute="leading" secondItem="bLx-xH-c9V" secondAttribute="trailing" constant="8" id="D9n-KB-GyF"/>
                     <constraint firstAttribute="centerY" secondItem="bLx-xH-c9V" secondAttribute="centerY" id="S1s-C5-d6Z"/>
-                    <constraint firstItem="bLx-xH-c9V" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="hzQ-bj-DNH"/>
+                    <constraint firstItem="bLx-xH-c9V" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="dla-vh-kUp"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="bLx-xH-c9V" secondAttribute="bottom" constant="8" id="jOQ-Ry-CIV"/>
                     <constraint firstItem="WpF-BO-eY6" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="10" id="xqJ-w9-IXB"/>
                 </constraints>

@@ -24,7 +24,7 @@
         self.name = dictionary[@"name"];
         self.screen_name = dictionary[@"screen_name"];
         self.profile_image_url = dictionary[@"profile_image_url"];
-        self.background_image_url = dictionary[@"profile_background_image_url"];
+        self.background_image_url = dictionary[@"profile_banner_url"];
         self.bio = dictionary[@"description"];
         self.followers_count = [dictionary[@"followers_count"] integerValue];
         self.following_count = [dictionary[@"friends_count"] integerValue];

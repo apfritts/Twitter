@@ -8,7 +8,8 @@
 
 #import "LoginViewController.h"
 #import "TwitterClient.h"
-#import "TimelineViewController.h"
+#import "HamburgerViewController.h"
+#import "Navigation.h"
 
 @interface LoginViewController ()
 
@@ -45,9 +46,15 @@
 - (IBAction)loginTap:(id)sender {
     [[TwitterClient sharedInstance] loginWithCompletion:^(User *user, NSError *error) {
         if (user != nil) {
-            TimelineViewController *twitter = [[TimelineViewController alloc] init];
-            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:twitter];
-            [self showViewController:nav sender:self];
+            // @TODO: There is a memory leak here... 8-!
+            [HamburgerViewController reset];
+            UIViewController *root = [[UIApplication sharedApplication] keyWindow].rootViewController;
+            [root presentViewController:[HamburgerViewController instance] animated:YES completion:^{
+                // do nothing?
+                [root removeFromParentViewController];
+                [[UIApplication sharedApplication] keyWindow].rootViewController = [HamburgerViewController instance];
+            }];
+            //[Navigation navigateToHome];
         } else {
             [UIView animateWithDuration:0.5f animations:^{
                 self.errorLabel.alpha = 1.0f;

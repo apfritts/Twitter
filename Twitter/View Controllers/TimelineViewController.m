@@ -34,8 +34,12 @@
     
     self.worstInternetForeground.layer.cornerRadius = 5;
     
-    self.title = @"Twitter";
+    //self.title = @"Twitter";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(onCompose)];
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:(85/255.0) green:(172/255.0) blue:(238/255.0) alpha:1.0];
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithWhite:1.0 alpha:1.0];
+    NSDictionary *attributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
+    [self.navigationController.navigationBar setTitleTextAttributes:attributes];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(loadTweets) forControlEvents:UIControlEventValueChanged];
@@ -97,12 +101,12 @@
     //}
 }
 
--(BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     TweetViewController *tvc = [[TweetViewController alloc] init];
     TweetCell *cell = (TweetCell *)[tableView cellForRowAtIndexPath:indexPath];
     tvc.tweet = [cell getTweet];
     [self.navigationController pushViewController:tvc animated:YES];
-    return NO;
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 -(void)didTapUser:(Tweet *)tweet {

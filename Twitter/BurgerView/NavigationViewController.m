@@ -16,8 +16,6 @@
 
 @interface NavigationViewController () <UITableViewDataSource, UITableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIImageView *profileBackgroundImage;
-@property (weak, nonatomic) IBOutlet UIImageView *profileImage;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -29,14 +27,12 @@
     [super viewDidLoad];
     
     User *user = [User currentUser];
-    [self.profileBackgroundImage setImageWithURL:[NSURL URLWithString:user.background_image_url]];
-    [self.profileImage setImageWithURL:[NSURL URLWithString:user.profile_image_url]];
-    self.nameLabel.text = user.name;
+    self.nameLabel.text = [NSString stringWithFormat:@"@%@", user.screen_name];
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     [self.tableView registerNib:[UINib nibWithNibName:@"NavigationCell" bundle:nil] forCellReuseIdentifier:@"NavigationCell"];
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.rowHeight = 60.0f;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -74,9 +70,11 @@
             [Navigation navigateToMentions];
             break;
         }
-        case 3:
+        case 3: {
             [Navigation navigateToLogin];
+            return NO;
             break;
+        }
     }
     [[HamburgerViewController instance] closeMenu];
     return NO;
